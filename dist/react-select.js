@@ -2424,7 +2424,13 @@ var CreatableSelect = function (_React$Component) {
 	}, {
 		key: 'onOptionSelect',
 		value: function onOptionSelect(option) {
-			if (option === this._createPlaceholderOption) {
+			var currentLabel = option && option.label;
+			var placeholderLabel = this._createPlaceholderOption && this._createPlaceholderOption.label;
+			/**
+    * fix: Reference of option and placeholderOption used to get changed
+    */
+
+			if (currentLabel === placeholderLabel) {
 				this.createNewOption();
 			} else {
 				this.select.selectValue(option);
