@@ -350,6 +350,8 @@ export type MenuListProps = {
   children: Node,
   /** Inner ref to DOM Node */
   innerRef: InnerRef,
+  /** ID of DOM Element */
+  id?: string,
 };
 export type MenuListComponentProps = CommonProps &
   MenuListProps &
@@ -368,9 +370,11 @@ export const menuListCSS = ({
   WebkitOverflowScrolling: 'touch',
 });
 export const MenuList = (props: MenuListComponentProps) => {
-  const { children, className, cx, getStyles, isMulti, innerRef } = props;
+  const { children, className, cx, getStyles, isMulti, innerRef, id } = props;
   return (
     <div
+      id={id}
+      role="listbox"
       css={getStyles('menuList', props)}
       className={cx(
         {
@@ -380,6 +384,7 @@ export const MenuList = (props: MenuListComponentProps) => {
         className
       )}
       ref={innerRef}
+      aria-expanded="true"
     >
       {children}
     </div>

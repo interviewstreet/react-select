@@ -1420,9 +1420,12 @@ export default class Select extends Component<Props, State> {
     const { inputIsHidden } = this.state;
 
     const id = inputId || this.getElementId('input');
+    const listBoxId = this.getElementId('listbox');
 
     // aria attributes makes the JSX "noisy", separated for clarity
     const ariaAttributes = {
+      role: 'combobox',
+      'aria-owns': listBoxId,
       'aria-autocomplete': 'list',
       'aria-label': this.props['aria-label'],
       'aria-labelledby': this.props['aria-labelledby'],
@@ -1727,6 +1730,8 @@ export default class Select extends Component<Props, State> {
       menuShouldScrollIntoView,
     };
 
+    const listBoxId = this.getElementId('listbox');
+
     const menuElement = (
       <MenuPlacer {...commonProps} {...menuPlacementProps}>
         {({ ref, placerProps: { placement, maxHeight } }) => (
@@ -1749,6 +1754,7 @@ export default class Select extends Component<Props, State> {
               <ScrollBlock isEnabled={menuShouldBlockScroll}>
                 <MenuList
                   {...commonProps}
+                  id={listBoxId}
                   innerRef={this.getMenuListRef}
                   isLoading={isLoading}
                   maxHeight={maxHeight}
