@@ -1,0 +1,27 @@
+repo:
+  name: react-select
+  description: The Select Component for React.js
+  owner: JedWatson
+
+prerequisites:
+  - name: GitHub CLI
+  - name: yarn
+  - name: node
+    version: '>=14.0.0'
+
+setup:
+  - yarn install
+  - yarn start
+
+dev:
+  command: yarn start
+  port: 3000
+
+build:
+  command: yarn build
+
+test:
+  command: yarn test
+
+lint:
+  command: yarn lint
